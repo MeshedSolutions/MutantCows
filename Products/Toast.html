@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Toast - Mutant Cows</title>
@@ -95,6 +95,83 @@
             </h2>
         </div>
         <div class="col-lg-4 text-left">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 text-left">
+            <h3>12/2/2014</h3>
+        </div>
+        <div class="col-lg-4 text-left">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 text-left">
+            <p>For this phase I am working on what I consider to be the most important part of this game, the tactics
+            system. The tactics system is what will differentiate your team from everyone else's and defines the actions
+            your team does in a fight. The tactics system is basically a rules engine that is used to determine what actions
+            occur and to whom based on certain criteria.</p>
+
+            <p>Two of the best examples of this is in Final Fantasy 12 and in Dragon Age: Origins. In Final Fantasy 12,
+            you have a team of three. You control the movements and combat choices for one of the characters while the
+            other two are on auto pilot using the rules you define for each one. In Dragon Age: Origins, you have a
+            team of up to four characters and you can define the rules for all of the characters. You control the actions
+            of only one of the characters at a time, but you can switch between any of them most of the time while
+            the others use the rules you define for their formation, movements, and actions.</p>
+
+            <p>It took me a while to wrap my head around how I wanted to handle this, and especially in a way that
+            would allow the ability to handle a large combination of rules without a lot of code repetition and would
+            make it easy to add additional actions and conditions, or at least some sort of standard way of adding them.
+            I finally realized that I needed to step back and really define what it was I was trying to do.</p>
+
+            <p>
+                <a href="../images/Toast/Update_12-2-2014/ToastTacticsNotes_01.png" target="_blank">
+                    <img src="../images/Toast/Update_12-2-2014/ToastTacticsNotes_01.png" width="100%" height="100%">
+                </a>
+            </p>
+
+            <p>The notes above, yes I know you probably can't read my writing, helped me solidify the logic for the rule
+            engine itself. Next I tried to figure out how I could work this programmatically. I possibly over engineered
+            this a little bit, but I just can't think of another way to handle multiple items in a similar and predictable
+            fashion.</p>
+
+            <p>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="../images/Toast/Update_12-2-2014/ToastTacticsNotes_02.png" target="_blank">
+                            <img src="../images/Toast/Update_12-2-2014/ToastTacticsNotes_02.png" width="100%" height="100%">
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="../images/Toast/Update_12-2-2014/ToastTacticsNotes_03.png" target="_blank">
+                            <img src="../images/Toast/Update_12-2-2014/ToastTacticsNotes_03.png" width="100%" height="100%">
+                        </a>
+                    </div>
+                </div>
+            </p>
+
+            <p><strong>Warning: I am going to discuss some more complicated programing concepts called design patterns to describe
+            how I intend to implement the rules engine.</strong> So my thought is to include the name of a class for each of
+            the values used as the target, condition, and action. This class name would be used with a factory using the
+            class name as the flag. I would then use reflection to create an instance of that class, such as "AnyTeamMember"
+            as the class for a target, and return that class. Each of these classes would conform to one of three interfaces
+            that is used to define the three types of classes, target, condition, and action. Using the interface, I will
+            use a strategy method to call the methods on the class returned. This would allow me to hide the implementation
+            details for each class, provide a standard set of method that have to be included, and allow me to predictably
+            handle each class. This opens it up to allow me to create any number of classes for each type that each do
+            their own thing, and also provides a way for the player to build any combination of strategies without adding
+            and additional line of code. So by using Interfaces, the Factory Pattern, the Strategy Pattern, and reflection
+            I can follow the logic from the third page to handle each rule in turn.</p>
+
+            <p>I would love input on this, I am very curious to see how other people have done this or if I am blatently
+            overlooking anything.</p>
+
+            <p>I also updated the development document to show the current progress and add some of the goals for the
+            fifth phase. Over the next week as I implement the tactics system, I will be adding additional phases and
+            reviewing the existing phases to make sure each phase includes a nice chunk of progress but not so much to
+            take over a week or two or be over whelming. The development document can be found
+            <a href="https://docs.google.com/document/d/1pMy2D0UYyMNci1RqEfZ4m8wd6FUpPHAyM1T-MYVDqZk/edit?usp=sharing"
+               target="_blank">here</a>.</p>
         </div>
     </div>
     <div class="row">
