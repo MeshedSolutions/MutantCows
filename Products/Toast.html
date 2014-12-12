@@ -100,6 +100,90 @@
 
     <div class="row">
         <div class="col-lg-8 text-left">
+            <h3>12/12/2014</h3>
+        </div>
+        <div class="col-lg-4 text-left">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-lg-8 text-left">
+            <p>Before I go much further developing Toast, I decided it was time to take time to clean up and refactor
+            the game code before adding any additional complexity, such as the tactics engine. What this allows me to
+            do is clean up the code by removing unused methods, variables, properties and such that get created and
+            abandoned while testing ways of doing things.
+            </p>
+
+            <p>
+                Refactoring is simply the organization of code to make it easier to read, understand, and maintain. By
+                providing relevant names to variables and methods that describe what it is used for or what it does, the
+                ability to read and follow what the code is doing is dramatically increased, especially for those who didn't
+                write the code. Taking methods with multiple chunks of logic or behavior and putting those chunks into
+                well named methods of their own is another important refactoring technique. Here is an example before and
+                after of one of the files I refactored.
+            </p>
+
+            <p>
+                <div class="row">
+                    <div class="col-lg-6 center">
+                        Before
+                    </div>
+                    <div class="col-lg-6 center">
+                        After
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="../images/Toast/Update_12-12-2014/DamageManagerBeforeRefactor.png" target="_blank">
+                            <img src="../images/Toast/Update_12-12-2014/DamageManagerBeforeRefactor.png" width="100%" height="100%">
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="../images/Toast/Update_12-12-2014/DamageManagerAfterRefactor.png" target="_blank">
+                            <img src="../images/Toast/Update_12-12-2014/DamageManagerAfterRefactor.png" width="100%" height="100%">
+                        </a>
+                    </div>
+                </div>
+            </p>
+
+            <p>
+                The third most common refactoring technique I employee is creating service classes from the code. A service
+                class is created and used to handle item or tasks specific actions, such as getting all, checking health,
+                creating a new item, getting the total count of created items, and other such actions that would be used
+                anywhere in the game. The service provides a way to centralize the code instead of potentially having
+                multiple ways of doing the same thing in different parts of the game code. Even if the methods in the
+                service are only used in say one class file, it is still easier to find all of the methods for the item,
+                such as a monster, instead of having to find this code and logic buried in methods. Here is an example
+                of a the service class I created to handle generic monster tasks and queries.
+            </p>
+
+            <p>
+                <a href="../images/Toast/Update_12-12-2014/ServiceRefactoring.png" target="_blank">
+                    <img src="../images/Toast/Update_12-12-2014/ServiceRefactoring.png" width="100%" height="100%">
+                </a>
+            </p>
+
+            <p>
+                The final thing I like to do is expose certain variables to the Unity UI. This is incredibly useful for
+                tweaking values when adjusting game play and balance, and can be done while the game is running in Unity
+                instead of requiring the developer to update the variable value in code and relaunch the game to see its
+                effect. You can see in the image below that I have exposed the ChanceToDodge variable to the UI, which is
+                then displayed as Chance To Dodge and has the initial value I assigned in the Damage Manager class file.
+            </p>
+
+            <p>
+                <a href="../images/Toast/Update_12-12-2014/DamageManagerVariableEditor.png" target="_blank">
+                    <img src="../images/Toast/Update_12-12-2014/DamageManagerVariableEditor.png" width="100%" height="100%">
+                </a>
+            </p>
+
+            <p>
+                Now that I have completed the refactoring, I am feeling much better about starting the work on the tactics
+                engine which while it will start out with simple logic, I expect the complexity to grow very quickly.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 text-left">
             <h3>12/2/2014</h3>
         </div>
         <div class="col-lg-4 text-left">
